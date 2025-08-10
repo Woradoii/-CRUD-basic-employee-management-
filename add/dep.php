@@ -55,29 +55,35 @@ require '../config/config.php';
               <label for="depname">Department name:</label>
               <input type="text" id="depname" name="depname" required><br>
               <div class="division">
-                  <p>Division:</p>
-                  <?php
-                  $sql = "SELECT ID, NAME FROM division";
-                  $result = mysqli_query($connect, $sql);
-                  if (mysqli_num_rows($result) > 0) {
-                    echo '<select name="division">';
-                    echo '<option value="">ไม่มี</option>';
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      echo '<option value="' . $row['ID'] . '">' . $row['NAME'] . '</option>';
-                    }
-                  } else {
-                    echo 'No data available';
+                <p>Division:</p>
+                <?php
+                $sql = "SELECT ID, NAME FROM division";
+                $result = mysqli_query($connect, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  echo '<select name="division">';
+                  echo '<option value="">ไม่มี</option>';
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row['ID'] . '">' . $row['NAME'] . '</option>';
                   }
-                  echo '</select>';
-                  ?>
+                } else {
+                  echo 'No data available';
+                }
+                echo '</select>';
+                ?><br>
 
-                </div>
+                <label for="hdivname" id="headname_label">Head name:</label>
+                <input type="text" id="headname" name="headname" required><br>
+
+                <br><button class="btn" id="confirm" type="submit">ยืนยัน</button>
+
+
+              </div>
             </form>
             <a href="../main/department.php"><button class="btn" id="cancel">ยกเลิก</button></a>
           </div>
         <?php endif; ?>
 
-        
+
       </div>
 
     </div>
